@@ -1,0 +1,37 @@
+name: PHP Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  php_checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
+      
+      - name: PHP lint
+        run: find . -name '*.php' -exec php -l {} \;
+      
+      - name: PHP CodeSniffer (PHP CS)
+        run: vendor/bin/phpcs --standard=PSR12 --ignore=vendor .
+
+      - name: PHP Mess Detector (PHPMD)
+        run: vendor/bin/phpmd . text cleancode
+
+      - name: PHP Code Beautifier and Fixer (PHP CBF)
+        run: vendor/bin/phpcbf --standard=PSR12 .
