@@ -28,13 +28,13 @@ jobs:
        # run: find . -name '*.php' -exec php -l {} \;
         # continue-on-error: true
       
-      - name: PHP CodeSniffer (PHP CS)
-        run: vendor/bin/phpcs --standard=PSR12 --ignore=vendor .
-        continue-on-error: true
+      #- name: PHP CodeSniffer (PHP CS)
+       # run: vendor/bin/phpcs --standard=PSR12 --ignore=vendor .
+       # continue-on-error: true
 
       - name: PHP Mess Detector (PHPMD)
         run: vendor/bin/phpmd . text cleancode custom_ruleset.xml 
-        continue-on-error: true
+        continue-on-error: false
 
       - name: PHP Code Beautifier and Fixer (PHP CBF)
         run: vendor/bin/phpcbf --standard=PSR12 .
