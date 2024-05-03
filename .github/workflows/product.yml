@@ -33,7 +33,7 @@ jobs:
         continue-on-error: true
 
       - name: PHP Mess Detector (PHPMD)
-        run: vendor/bin/phpmd . text cleancode --rule 'custom_ruleset.xml' --properties "IS_PUBLIC"
+        run: vendor/bin/phpmd . text cleancode --rule 'custom_ruleset.xml' 
         continue-on-error: true
 
       - name: PHP Code Beautifier and Fixer (PHP CBF)
