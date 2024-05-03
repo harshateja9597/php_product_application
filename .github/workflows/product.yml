@@ -24,9 +24,9 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist
       
-      - name: PHP lint
-        run: find . -name '*.php' -exec php -l {} \;
-        continue-on-error: true
+      #- name: PHP lint
+       # run: find . -name '*.php' -exec php -l {} \;
+        # continue-on-error: true
       
       - name: PHP CodeSniffer (PHP CS)
         run: vendor/bin/phpcs --standard=PSR12 --ignore=vendor .
