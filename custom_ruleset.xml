@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Ruleset">
+    <description>Custom ruleset for PHPMD</description>
+    
+    <!-- Include individual rules -->
+    <rule ref="rulesets/cleancode.xml/ShortVariable" />
+    <rule ref="rulesets/codesize.xml/ExcessiveClassLength" />
+    
+    <!-- Exclude specific rules -->
+    <exclude name="NamingConventions"/>
+</ruleset>
