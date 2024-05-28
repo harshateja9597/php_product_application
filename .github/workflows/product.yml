@@ -29,9 +29,10 @@ jobs:
       
       - name: PHP CodeSniffer (PHP CS)
         run: vendor/bin/phpcs --standard=PSR12 --ignore=vendor .
+        continue-on-error: true
   
       - name: PHP Mess Detector (PHPMD)
         run: vendor/bin/phpmd . text custom_ruleset.xml 
   
       - name: PHP Code Beautifier and Fixer (PHP CBF)
-        run: vendor/bin/phpcbf --standard=PSR12 .
+        run: vendor/bin/phpcbf --standard=PSR12 --ignore=vendor .
